@@ -1,2 +1,2 @@
-rm -rf /var/www/html/
-cp -r ./html/ /var/www/html/
+rm -rf /home/wojtek/codeigniter/myapp/
+cp -r ./html/ /home/wojtek/codeigniter/myapp/
