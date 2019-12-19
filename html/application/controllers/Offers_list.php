@@ -14,7 +14,7 @@ class Offers_list extends MY_Controller {
 
 	public function index() {
 		$this->addContentData('offers', $this->offersModel->getOffers());
-
-		$this->load->view('site_template', $this->prepareData());
+		
+		$this->load->render($this->prepareData());
 	}
 }
