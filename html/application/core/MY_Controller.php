@@ -24,13 +24,17 @@ class MY_Controller extends CI_Controller {
 
 		$this->initialize();
 	}
+
+	protected function render() {
+		$this->load->view($this->prepareData());
+	}
 	
 	protected function addContentData(string $index, $data): self {
 		$this->contentData[$index] = $data;
 		return $this;
 	}
 
-	protected function getContentData(): array {
+	private function getContentData(): array {
 		return $this->contentData;
 	}
 
@@ -39,7 +43,7 @@ class MY_Controller extends CI_Controller {
 		return $this;
 	}
 
-	protected function getHeader() {
+	private function getHeader() {
 		return $this->header;
 	}
 
@@ -48,7 +52,7 @@ class MY_Controller extends CI_Controller {
 		return $this;
 	}
 
-	protected function getTitle(): string {
+	private function getTitle(): string {
 		return $this->title;
 	}
 
@@ -57,11 +61,11 @@ class MY_Controller extends CI_Controller {
 		return $this;
 	}
 
-	protected function getView(): string {
+	private function getView(): string {
 		return $this->view;
 	}
 	
-	protected function prepareData(): array {
+	private function prepareData(): array {
 		$this->data['header'] = $this->getHeader();
 		$this->data['title'] = $this->getTitle();
 		$this->data['view'] = $this->getView();

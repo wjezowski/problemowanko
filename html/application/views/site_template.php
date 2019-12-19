@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <?php
-	$this->load->view('every_page/head');
+	$this->load->original_view_method('every_page/head');
 ?>
 
 	<body>
@@ -14,22 +14,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<div id="content_container">
 <?php
-				$this->load->view('every_page/menu');
+				$this->load->original_view_method('every_page/menu');
 ?>
 				<div id="body">
 <?php
-					$this->load->view('every_page/buttons');
+					$this->load->original_view_method('every_page/buttons');
 ?>
 					<div id="body_container">
 <?php
-						$this->load->view($view, $main_content);
+						$this->load->original_view_method($view, $main_content);
 ?>
 					</div>
 				</div>
 			</div>
 			
 <?php
-			$this->load->view('every_page/footers');
+			$this->load->original_view_method('every_page/footers');
 ?>
 		</div>
 	</body>

@@ -231,7 +231,7 @@ class CI_Loader {
 	 * @param	bool	$db_conn	An optional database connection configuration to initialize
 	 * @return	object
 	 */
-	public function model($model, $name = '', $db_conn = FALSE)
+	protected function original_model_method($model, $name = '', $db_conn = FALSE)
 	{
 		if (empty($model))
 		{
@@ -241,7 +241,7 @@ class CI_Loader {
 		{
 			foreach ($model as $key => $value)
 			{
-				is_int($key) ? $this->model($value, '', $db_conn) : $this->model($key, $value, $db_conn);
+				is_int($key) ? $this->original_model_method($value, '', $db_conn) : $this->original_model_method($key, $value, $db_conn);
 			}
 
 			return $this;
@@ -490,7 +490,7 @@ class CI_Loader {
 	 *				or leave it to the Output class
 	 * @return	object|string
 	 */
-	public function view($view, $vars = array(), $return = FALSE)
+	public function original_view_method($view, $vars = array(), $return = FALSE)
 	{
 		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 	}
@@ -1362,7 +1362,7 @@ class CI_Loader {
 		// Autoload models
 		if (isset($autoload['model']))
 		{
-			$this->model($autoload['model']);
+			$this->original_model_method($autoload['model']);
 		}
 	}
 
