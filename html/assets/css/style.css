@@ -253,3 +253,46 @@ input#add_printer:active {
 	background-color: #f1f1f1;
 	border-radius: 4px;
 }
+
+
+
+
+
+
+
+.row {
+	padding: 5px 0;
+}
+
+
+.offers_table {
+	text-align: center;
+	width: 100%;
+
+	
+
+	border-radius: 13px;
+	border-top: 1px solid #d0d0d0;
+	border-right: 1px solid #d0d0d0;
+	border-left: 1px solid #d0d0d0;
+}
+
+.offer, .offers_header {
+	margin-bottom: 15px;
+}
+
+.offer {
+	border-bottom: 1px solid #d0d0d0;
+	border-radius: 40px;
+}
+
+.offer_name, .offer_salary, .offer_company_name, .offer_city {
+	display: inline-block;
+}
+
+.offer_name, .offer_company_name {
+	width: 34.5%;
+}
+.offer_salary, .offer_city {
+	width: 14.5%;
+}
