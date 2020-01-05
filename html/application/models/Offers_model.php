@@ -2,11 +2,18 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Offers_model extends MY_Model {
-    public function getOffers(): array {
-        $offers = $this->getByCurl('localhost', DATABASE_PORT, 'get.offers');
+    private $perPage = 25;
 
-        var_dump($offers);die;
-        for ($i = 0; $i < 10; ++$i) {
+    private $numberOfOffers = null;
+    private $maxPage = null;
+
+    public function getOffers(int $page): array {
+        // $offers = $this->getByCurl('localhost', DATABASE_PORT, 'get.offers');
+
+        // var_dump($offers);die;
+
+        $offset = $page * $this->perPage;
+        for ($i = $offset; $i < $offset + $this->perPage && $i < $this->getNumberOfOffers(); ++$i) {
             $offers[] = [
                 'id' => $i,
                 'offer_name' => 'Nazwa oferty '. $i,
@@ -18,5 +25,21 @@ class Offers_model extends MY_Model {
         }
 
         return $offers;
+    }
+
+    public function getNumberOfOffers(): int {
+        if (is_null($this->numberOfOffers)) {
+            $this->numberOfOffers = 997;
+        }
+
+        return $this->numberOfOffers;
+    }
+
+    public function getMaxPage(): int {
+        if (is_null($this->maxPage)) {
+            $this->maxPage = $this->getNumberOfOffers() / $this->perPage;
+        }
+
+        return $this->maxPage;
     }
 }

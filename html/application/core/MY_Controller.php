@@ -79,4 +79,9 @@ class MY_Controller extends CI_Controller {
 			->setTitle('Problemowanko xD')
 			->setView($this->router->class .'/'. $this->router->method);
 	}
+
+	protected function redirect(string $url): void {
+		header('Location: '. $url);
+		die;
+	}
 }
